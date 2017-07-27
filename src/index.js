@@ -12,20 +12,23 @@ import {loadPostIts, savePostIts} from './storage/storage.js';
 import {PostItApp} from './components/PostItApp.js';
 import {postIts} from './reducers/postits.js';
 import {editing} from './reducers/editing.js';
+import {newPostIt} from './reducers/newpostit.js';
 
 
 const reducer = combineReducers({
   postIts,
-  editing
+  editing,
+  newPostIt
 });
 const posts = loadPostIts();
 const store = createStore(reducer, {
   postIts: posts,
-  editing: new Map(posts.map(p => [p.id, false]))
+  editing: new Map(posts.map(p => [p.id, false])),
 });
 store.dispatch({type: 'unknown'});
 
 store.subscribe(() => savePostIts(store.getState().postIts));
+store.subscribe(() => console.log(store.getState()));
 
  
 render(<Provider store={store}>
