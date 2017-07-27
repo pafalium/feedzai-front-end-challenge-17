@@ -6,6 +6,7 @@ import {deletePostIt, editPostIt, updatePostIt} from '../actions/actions.js';
 
 import {PostIt} from './PostIt.js';
 import {EditPostIt} from './EditPostIt.js';
+import {AddPostIt} from './AddPostIt.js';
 
 
 export const PostItListView = ({postIts, editing, onPostDelete, onPostFocus, onPostBlur}) => (
@@ -18,6 +19,7 @@ export const PostItListView = ({postIts, editing, onPostDelete, onPostFocus, onP
         : <PostIt key={post.id} {...post} 
             onDeleteClick={() => onPostDelete(post.id)} 
             onContentClick={() => onPostFocus(post.id)}/>)}
+    <AddPostIt />
   </div>
 );
 
