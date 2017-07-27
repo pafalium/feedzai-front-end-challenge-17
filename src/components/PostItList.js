@@ -13,9 +13,7 @@ export const PostItListView = ({postIts, editing, onPostDelete, onPostFocus, onP
   <div>
     {postIts.map(post => 
       editing.get(post.id)
-        ? <EditPostIt key={post.id} {...post}
-            onDeleteClick={() => onPostDelete(post.id)} 
-            onBlur={(title, body) => onPostBlur(post.id, title, body)} />
+        ? <EditPostIt key={post.id} {...post} />
         : <PostIt key={post.id} {...post} 
             onDeleteClick={() => onPostDelete(post.id)} 
             onContentClick={() => onPostFocus(post.id)}/>)}

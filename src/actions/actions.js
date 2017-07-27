@@ -4,6 +4,7 @@ export const DELETE_POST_IT = 'DELETE_POST_IT';
 export const UPDATE_POST_IT = 'UPDATE_POST_IT';
 
 export const EDIT_POST_IT = 'EDIT_POST_IT';
+export const END_EDIT_POST_IT = 'END_EDIT_POST_IT';
 
 
 export function addPostIt(id, title, body) {
@@ -38,3 +39,11 @@ export function editPostIt(id) {
     id
   };
 }
+
+export function endEditPostIt(id) {
+  return {
+    type: END_EDIT_POST_IT,
+    id
+  };
+}
+
