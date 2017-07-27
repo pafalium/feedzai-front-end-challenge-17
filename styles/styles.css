@@ -16,6 +16,8 @@
 
 .post-it-card-body {
   width: 90%;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .post-it-title {

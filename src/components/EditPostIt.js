@@ -19,6 +19,7 @@ export const EditPostItView = ({title, body, onBlur, onTitleChange, onBodyChange
         onChange={evt => onTitleChange(evt.target.value)}
         onBlur={onBlur} />
       <textarea 
+        className="post-it-body"
         placeholder="Your note here..." 
         value={body}
         onChange={evt => onBodyChange(evt.target.value)}
