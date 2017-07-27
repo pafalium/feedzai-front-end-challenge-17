@@ -14,7 +14,16 @@
   float: right;
 }
 
-.post-it-card .post-it-title {
-  display: inline;
+.post-it-card-body {
+  width: 90%;
 }
 
+.post-it-title {
+  width: 100%;
+  height: 10%;
+}
+
+.post-it-body {
+  width: 100%;
+  height: 90%;
+}
