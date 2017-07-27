@@ -1,13 +1,14 @@
 
 import React from 'react';
 
+import {Card} from './Card.js';
 
-export const PostIt = ({title, body, onDeleteClick}) => (
-  <div className="post-it-card">
-    <h2 className="post-it-title">{title}</h2>
-    <button className="post-it-top-button" onClick={onDeleteClick}>X</button>
-    <p>{body}</p>
-  </div>
+
+export const PostIt = ({title, body, onDeleteClick, onContentClick}) => (
+  <Card topButton={<button onClick={onDeleteClick}>X</button>}>
+    <div onClick={onContentClick}>
+      <h2 className="post-it-title">{title}</h2>
+      <p>{body}</p>
+    </div>
+  </Card>
 );
-
-

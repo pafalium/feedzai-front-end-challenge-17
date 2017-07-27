@@ -6,23 +6,21 @@ import uuid from 'uuid/v4';
 
 import {addPostIt} from '../actions/actions.js';
 
+import {Card} from './Card.js';
 
-//TODO
+
 export const AddPostItView = ({onAddClick}) => {
   let titleInput, bodyInput;
+  const onAdd = () => onAddClick(titleInput.value, bodyInput.value);
   return (
-    <div className="post-it-card">
+    <Card topButton={<button onClick={onAdd}>+</button>}>
       <input type="text" 
         className="post-it-title"
         placeholder="Title" 
-        ref={node => {titleInput = node}}/>
-      <button className="post-it-top-button"
-        onClick={() => onAddClick(titleInput.value, bodyInput.value)}>
-        +
-      </button>
+        ref={node => {titleInput = node}}/>      
       <textarea placeholder="Your note here..." 
         ref={node => {bodyInput = node}} />
-    </div>
+    </Card>
   );
 
 }
