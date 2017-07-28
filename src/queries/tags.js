@@ -6,3 +6,11 @@ export function allPostTags(postIts) {
   return [...(new Set(duplicateTags))];
 }
 
+
+export function postTagFilter(tagFilter) {
+  if (tagFilter == "") {
+    return postIt => true;
+  } else {
+    return postIt => postIt.tags.some(tag => tag.startsWith(tagFilter));
+  }
+}

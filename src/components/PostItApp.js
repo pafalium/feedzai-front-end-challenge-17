@@ -1,13 +1,16 @@
 
 import React from 'react';
 
-import {PostItList} from './PostItList.js';
-
+import {PostItList, FilteredPostItList} from './PostItList.js';
+import {TagFilter} from './TagFilter.js';
 
 export const PostItApp = () => (
   <div>
     <h1>Online Post-It Board</h1>
-    <PostItList />
+    <hr/>
+    <TagFilter />
+    <hr/>
+    <FilteredPostItList />
   </div>
 );
 

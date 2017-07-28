@@ -9,6 +9,8 @@ export const END_EDIT_POST_IT = 'END_EDIT_POST_IT';
 
 export const UPDATE_NEW_POST_IT = 'UPDATE_NEW_POST_IT';
 
+export const SET_TAG_FILTER = 'SET_TAG_FILTER';
+
 export function addPostIt(id, title, body) {
   return {
     type: ADD_POST_IT,
@@ -63,5 +65,13 @@ export function updateNewPostIt(title, body) {
     type: UPDATE_NEW_POST_IT,
     title,
     body
+  };
+}
+
+
+export function setTagFilter(tagFilter) {
+  return {
+    type: SET_TAG_FILTER,
+    tagFilter
   };
 }

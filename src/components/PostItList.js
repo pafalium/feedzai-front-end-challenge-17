@@ -8,6 +8,8 @@ import {PostIt} from './PostIt.js';
 import {EditPostIt} from './EditPostIt.js';
 import {AddPostIt} from './AddPostIt.js';
 
+import {postTagFilter} from '../queries/tags.js';
+
 
 export const PostItListView = ({postIts, editing, onPostDelete, onPostFocus, onPostBlur}) => (
   <div>
@@ -21,12 +23,23 @@ export const PostItListView = ({postIts, editing, onPostDelete, onPostFocus, onP
   </div>
 );
 
+
+const mapDispatchToProps = dispatch => ({
+  onPostDelete: id => dispatch(deletePostIt(id)),
+  onPostFocus: id => dispatch(editPostIt(id)),
+  onPostBlur: (id, title, body) => dispatch(updatePostIt(id, title, body))
+});
+
 export const PostItList = connect(
   state => state,
-  dispatch => ({
-    onPostDelete: id => dispatch(deletePostIt(id)),
-    onPostFocus: id => dispatch(editPostIt(id)),
-    onPostBlur: (id, title, body) => dispatch(updatePostIt(id, title, body))
-  })
+  mapDispatchToProps
+)(PostItListView);
+
+export const FilteredPostItList = connect(
+  ({postIts, tagFilter, editing}) => ({
+    postIts: postIts.filter(postTagFilter(tagFilter)),
+    editing
+  }),
+  mapDispatchToProps
 )(PostItListView);
 

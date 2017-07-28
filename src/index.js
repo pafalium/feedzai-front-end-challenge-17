@@ -10,15 +10,18 @@ import {Provider} from 'react-redux';
 import {loadPostIts, savePostIts} from './storage/storage.js';
 
 import {PostItApp} from './components/PostItApp.js';
+
 import {postIts} from './reducers/postits.js';
 import {editing} from './reducers/editing.js';
 import {newPostIt} from './reducers/newpostit.js';
+import {tagFilter} from './reducers/tagfilter.js';
 
 
 const reducer = combineReducers({
   postIts,
   editing,
-  newPostIt
+  newPostIt,
+  tagFilter
 });
 const posts = loadPostIts();
 const store = createStore(reducer, {
