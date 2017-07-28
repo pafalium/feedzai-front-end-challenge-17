@@ -5,12 +5,13 @@ import {connect} from 'react-redux';
 import uuid from 'uuid/v4';
 
 import {addPostIt, updateNewPostIt} from '../actions/actions.js';
-
 import {Card} from './Card.js';
-
 import {validPostIt} from '../validation/validPostIt.js';
 
 
+/**
+  Presentation component for adding a new Post-It.
+*/
 export const AddPostItView = ({title, body, onAddClick, onChange}) => {
   let titleInput, bodyInput;
   const onAdd = () => onAddClick(title, body);
@@ -28,9 +29,14 @@ export const AddPostItView = ({title, body, onAddClick, onChange}) => {
         onChange={evt => onChange(title, evt.target.value)} />
     </Card>
   );
-}
+};
 
 
+/**
+  Container component for AddPostItView.
+  Takes care of validation of input before generating the action for
+  adding the new Post-It.
+*/
 export const AddPostIt = connect(
   ({newPostIt}) => ({title: newPostIt.title, body: newPostIt.body}),
   (dispatch) => ({

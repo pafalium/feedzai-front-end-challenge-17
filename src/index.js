@@ -17,25 +17,30 @@ import {newPostIt} from './reducers/newpostit.js';
 import {tagFilter} from './reducers/tagfilter.js';
 
 
+// Create app's reducer
 const reducer = combineReducers({
   postIts,
   editing,
   newPostIt,
   tagFilter
 });
+
+// Create store with state loaded from localStorage
 const posts = loadPostIts();
 const store = createStore(reducer, {
   postIts: posts,
   editing: new Map(posts.map(p => [p.id, false])),
 });
-store.dispatch({type: 'unknown'});
 
+// Save to localStorage on every change
 store.subscribe(() => savePostIts(store.getState().postIts));
+// Log state to console on every change
 store.subscribe(() => console.log(store.getState()));
 
- 
+store.dispatch({type: 'unknown'});
+
+// Mount the root app component on the DOM
 render(<Provider store={store}>
          <PostItApp />
        </Provider>, 
        document.getElementById('container'));
-

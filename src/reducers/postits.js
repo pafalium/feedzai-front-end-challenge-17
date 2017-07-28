@@ -1,7 +1,13 @@
 
 import {ADD_POST_IT, DELETE_POST_IT, UPDATE_POST_IT, UPDATE_POST_IT_TAGS} from '../actions/actions.js';
 
+/**
+  postIts reducer
+  Keeps track of the Post-Its created in the application.
 
+  Responds to actions ADD_POST_IT, DELETE_POST_IT, UPDATE_POST_IT, 
+  and UPDATE_POST_IT_TAGS.
+*/
 export function postIts(state = [], action = {}) {
   switch (action.type) {
     case ADD_POST_IT:
