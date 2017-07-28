@@ -1,6 +1,5 @@
 
-import {ADD_POST_IT, DELETE_POST_IT, UPDATE_POST_IT} from '../actions/actions.js';
-
+import {ADD_POST_IT, DELETE_POST_IT, UPDATE_POST_IT, UPDATE_POST_IT_TAGS} from '../actions/actions.js';
 
 
 export function postIts(state = [], action = {}) {
@@ -9,7 +8,8 @@ export function postIts(state = [], action = {}) {
       let post = {
         id: action.id,
         title: action.title,
-        body: action.body
+        body: action.body,
+        tags: []
       };
       return [...state, post];
     break;
@@ -18,7 +18,18 @@ export function postIts(state = [], action = {}) {
                        ? {
                         id: action.id,
                         title: action.title,
-                        body: action.body
+                        body: action.body,
+                        tags: post.tags
+                       }
+                       : post);
+    break;
+    case UPDATE_POST_IT_TAGS:
+      return state.map(post => post.id === action.id
+                       ? {
+                        id: post.id,
+                        title: post.title,
+                        body: post.body,
+                        tags: action.tags
                        }
                        : post);
     break;

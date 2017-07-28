@@ -2,6 +2,7 @@
 export const ADD_POST_IT = 'ADD_POST_IT';
 export const DELETE_POST_IT = 'DELETE_POST_IT';
 export const UPDATE_POST_IT = 'UPDATE_POST_IT';
+export const UPDATE_POST_IT_TAGS = 'UPDATE_POST_IT_TAGS';
 
 export const EDIT_POST_IT = 'EDIT_POST_IT';
 export const END_EDIT_POST_IT = 'END_EDIT_POST_IT';
@@ -30,6 +31,14 @@ export function updatePostIt(id, title, body) {
     id,
     title,
     body
+  };
+}
+
+export function updatePostItTags(id, tags) {
+  return {
+    type: UPDATE_POST_IT_TAGS,
+    id,
+    tags
   };
 }
 

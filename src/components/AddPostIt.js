@@ -35,7 +35,7 @@ export const AddPostIt = connect(
   ({newPostIt}) => ({title: newPostIt.title, body: newPostIt.body}),
   (dispatch) => ({
     onAddClick: (newTitle, newBody) => { 
-      if (validPostIt(newTitle, newBody)) {
+      if (validPostIt(newTitle, newBody, [])) {
         dispatch(addPostIt(uuid(), newTitle, newBody))
       }
     },
